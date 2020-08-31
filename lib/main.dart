@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_complex_json/models/user.dart';
+import 'package:flutter_complex_json/screens/load_when_scroll_page.dart';
 import 'package:flutter_complex_json/services/service_helper.dart';
 
 void main() {
@@ -38,8 +40,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LoadWhenScrollPage()));
+              },
+          ),
+        ],
         backgroundColor: Colors.red,
         centerTitle: true,
         title: Text(
